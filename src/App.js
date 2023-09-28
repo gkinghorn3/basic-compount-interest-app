@@ -68,7 +68,7 @@ function App() {
         </p>
       </form>
 
-      {/* Todo: Show below table conditionally (only once result data is available) */}
+      {/* Todo: Show blow table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
 
       <table className="result">
