@@ -1,17 +1,17 @@
 import {useState} from 'react';
 
 
-const Form = (props) => {
+const Form = ({calcHandler}) => {
 
     const [userInput, setUserInput] = useState({});
 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log('submit')
+        calcHandler(userInput);   
     }
 
     const resetHandler = () => {
-        console.log('reset');
+        setUserInput({});
     }
     
     const inputChangeHandler = (input, value) => {
@@ -19,7 +19,7 @@ const Form = (props) => {
             return {...prevState, [input]: value}
             
         })
-        console.log(userInput);
+        
     }
 
 
