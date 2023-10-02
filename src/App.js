@@ -9,12 +9,12 @@ function App() {
 
   const [yearlyData, setYearlyData] = useState([]);
 
+
   const calculateHandler = (inputData) => {
     
-    // Should be triggered when form is submitted
-    // You might not directly want to bind it to the submit event on the form though...
+  
 
-    const yearlyData = []; // per-year results
+    const yearlyData = [];
 
 
     let currentSavings = +inputData['current-savings']; 
@@ -26,7 +26,7 @@ function App() {
 
     
 
-    // The below code calculates yearly results (total savings, interest etc)
+    // calculate yearly results (total savings, interest etc)
     for (let i = 0; i < duration; i++) {
       const yearlyInterest = currentSavings * expectedReturn;
       currentSavings += yearlyInterest + yearlyContribution;
@@ -34,7 +34,7 @@ function App() {
       totalInvestedCapital += yearlyContribution;
 
       yearlyData.push({
-        // feel free to change the shape of the data pushed to the array!
+        
         year: i + 1,
         yearlyInterest: yearlyInterest,
         savingsEndOfYear: currentSavings,
@@ -44,7 +44,7 @@ function App() {
       });
     }
     setYearlyData(yearlyData);
-    // do something with yearlyData ...
+    
   
   };
 
