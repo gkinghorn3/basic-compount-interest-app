@@ -8,13 +8,19 @@ import ResultTable from './components/ResultTable/ResultTable.component';
 function App() {
 
   const [yearlyData, setYearlyData] = useState([]);
+  
+  const resetTable = (childState) => {
+    setYearlyData([]);
+  }
+
+  
 
 
   const calculateHandler = (inputData) => {
     
   
 
-    const yearlyData = [];
+    const userData = [];
 
 
     let currentSavings = +inputData['current-savings']; 
@@ -33,7 +39,7 @@ function App() {
       totalInterest += yearlyInterest;
       totalInvestedCapital += yearlyContribution;
 
-      yearlyData.push({
+      userData.push({
         
         year: i + 1,
         yearlyInterest: yearlyInterest,
@@ -43,7 +49,7 @@ function App() {
         totalInvestedCapital: totalInvestedCapital,
       });
     }
-    setYearlyData(yearlyData);
+    setYearlyData(userData);
     
   
   };
@@ -52,12 +58,11 @@ function App() {
     <div>
       <Header />
 
-      <Form calcHandler={calculateHandler} />
+      <Form calcHandler={calculateHandler} resetTable={resetTable}  />
 
-      {/* Todo: Show blow table conditionally (only once result data is available) */}
-      {/* Show fallback text if no data is available */}
 
-      <ResultTable yearlyData={yearlyData} />
+      {yearlyData.length === 0 && (<p className='no-data-msg'>No data to show</p>)}
+      {yearlyData.length > 0 && (<ResultTable yearlyData={yearlyData} />)}
     </div>
   );
 }
