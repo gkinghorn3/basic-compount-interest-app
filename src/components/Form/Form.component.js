@@ -6,6 +6,8 @@ const Form = ({calcHandler, resetTable}) => {
     const [userInput, setUserInput] = useState({});
 
 
+
+
     const submitHandler = (event) => {
         event.preventDefault();
         calcHandler(userInput);   
@@ -23,6 +25,8 @@ const Form = ({calcHandler, resetTable}) => {
             return {...prevState, [input]: value}
             
         })
+      
+      
         
     }
 
